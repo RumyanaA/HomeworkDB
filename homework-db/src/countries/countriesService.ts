@@ -16,4 +16,14 @@ export class CountriesService {
     });
     return country[0];
   }
+  public async getCountriesIds(countries: string[] = []) {
+    const countriesToVisit: Countries[] = [];
+    for (let i = 0; i < countries.length; i++) {
+      const currentCountry = await this.countriesRepository.find({
+        where: { countryName: countries[i] },
+      });
+      countriesToVisit.push(currentCountry[0]);
+    }
+    return countriesToVisit;
+  }
 }

@@ -18,7 +18,10 @@ export class UsersController {
     const country = await this.countriesService.getCountryId(
       createUsersDto.country,
     );
-    debugger;
+    const countriesToVisit = await this.countriesService.getCountriesIds(
+      createUsersDto.countriesToVisit,
+    );
+    console.log(countriesToVisit);
     const hashedPassword = await this.passwordService.hashPassword(
       createUsersDto.password,
     );
@@ -27,9 +30,8 @@ export class UsersController {
       email: createUsersDto.email,
       password: hashedPassword,
       country: country.id,
-      countriesToVisit: [country],
+      countriesToVisit: countriesToVisit,
     };
-    console.log(userData);
     this.usersService.create(userData);
   }
 }
