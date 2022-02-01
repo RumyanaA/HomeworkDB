@@ -21,6 +21,9 @@ export class User {
   @Column()
   country: number;
 
+  @Column()
+  expiration_date: string;
+
   @ManyToMany((type) => Countries)
   @JoinTable()
   countriesToVisit: Countries[];

@@ -19,7 +19,6 @@ import { PasswordService } from './passwordHash.service';
       password: 'passw0rd',
       database: 'homework',
       entities: [User, Countries],
-      synchronize: true,
     }),
     TypeOrmModule.forFeature([Countries, User]),
   ],

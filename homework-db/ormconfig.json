@@ -1,0 +1,21 @@
+{
+
+    "type": "mysql",
+
+    "host": "localhost",
+
+    "port": 3305,
+
+    "username": "root",
+
+    "password": "passw0rd",
+
+    "database": "homework",
+
+    "synchronize": false,
+
+    "migrations": ["src/migrations/**/*.ts"],
+
+    "cli": { "migrationsDir":"src/migrations"}
+
+}

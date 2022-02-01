@@ -21,15 +21,19 @@ export class UsersController {
     const countriesToVisit = await this.countriesService.getCountriesIds(
       createUsersDto.countriesToVisit,
     );
-    console.log(countriesToVisit);
     const hashedPassword = await this.passwordService.hashPassword(
       createUsersDto.password,
     );
+    const today = new Date();
+    const inNintyDays = new Date();
+    inNintyDays.setDate(today.getDate() + 90);
+    const passwordExpiration = inNintyDays.toISOString().split('T')[0];
     const userData: User = {
       id: null,
       email: createUsersDto.email,
       password: hashedPassword,
       country: country.id,
+      expiration_date: passwordExpiration,
       countriesToVisit: countriesToVisit,
     };
     this.usersService.create(userData);
