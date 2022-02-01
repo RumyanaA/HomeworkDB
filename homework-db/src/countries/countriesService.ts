@@ -10,10 +10,10 @@ export class CountriesService {
     private countriesRepository: Repository<Countries>,
   ) {}
 
-  public async getCountryId(countryName: string): Promise<number> {
+  public async getCountryId(countryName: string): Promise<Countries> {
     const country = await this.countriesRepository.find({
       where: { countryName: countryName },
     });
-    return country[0].id;
+    return country[0];
   }
 }

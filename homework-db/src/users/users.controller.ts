@@ -15,7 +15,7 @@ export class UsersController {
 
   @Post()
   async create(@Body() createUsersDto: CreateUsersDto) {
-    const countryId = await this.countriesService.getCountryId(
+    const country = await this.countriesService.getCountryId(
       createUsersDto.country,
     );
     debugger;
@@ -26,8 +26,8 @@ export class UsersController {
       id: null,
       email: createUsersDto.email,
       password: hashedPassword,
-      country: countryId,
-      classes: [],
+      country: country.id,
+      countriesToVisit: [country],
     };
     console.log(userData);
     this.usersService.create(userData);

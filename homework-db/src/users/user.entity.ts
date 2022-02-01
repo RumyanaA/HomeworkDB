@@ -23,5 +23,5 @@ export class User {
 
   @ManyToMany((type) => Countries)
   @JoinTable()
-  classes: Countries[];
+  countriesToVisit: Countries[];
 }
